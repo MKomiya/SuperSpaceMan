@@ -11,6 +11,7 @@ import SpriteKit
 class GameScene: SKScene {
     
     let backgroundNode : SKSpriteNode?
+    let playerNode : SKSpriteNode?
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -26,5 +27,10 @@ class GameScene: SKScene {
         backgroundNode!.anchorPoint = CGPoint(x: 0.5, y: 0.0)
         backgroundNode!.position    = CGPoint(x: size.width / 2.0, y: 0.0)
         addChild(backgroundNode!)
+        
+        // add the player
+        playerNode = SKSpriteNode(imageNamed: "Player")
+        playerNode!.position = CGPoint(x: size.width / 2.0, y: 80.0)
+        addChild(playerNode!)
     }
 }
