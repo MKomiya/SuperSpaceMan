@@ -11,7 +11,7 @@ import SpriteKit
 class GameScene: SKScene {
     
     let backgroundNode : SKSpriteNode?
-    let playerNode : SKSpriteNode?
+    var playerNode : SKSpriteNode?
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
