@@ -30,7 +30,14 @@ class GameScene: SKScene {
         
         // add the player
         playerNode = SKSpriteNode(imageNamed: "Player")
+        playerNode!.physicsBody = SKPhysicsBody(circleOfRadius: playerNode!.size.width / 2)
+        playerNode!.physicsBody!.dynamic = true
         playerNode!.position = CGPoint(x: size.width / 2.0, y: 80.0)
+        playerNode!.physicsBody!.linearDamping = 1.0
         addChild(playerNode!)
+    }
+    
+    override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
+        playerNode!.physicsBody!.applyImpulse(CGVectorMake(0.0, 40.0))
     }
 }
