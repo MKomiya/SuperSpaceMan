@@ -10,9 +10,9 @@ import SpriteKit
 
 class GameScene: SKScene {
     
-    let backgroundNode : SKSpriteNode?
+    var backgroundNode : SKSpriteNode?
     var playerNode : SKSpriteNode?
-    let orbNode : SKSpriteNode?
+    var orbNode : SKSpriteNode?
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -45,7 +45,7 @@ class GameScene: SKScene {
         addChild(orbNode!)
     }
     
-    override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
+    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
         playerNode!.physicsBody!.applyImpulse(CGVectorMake(0.0, 40.0))
     }
 }
