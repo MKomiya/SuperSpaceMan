@@ -14,6 +14,9 @@ class GameScene: SKScene {
     var playerNode : SKSpriteNode?
     var orbNode : SKSpriteNode?
     
+    let CollisionCategoryPlayer : UInt32     = 0x1 << 1
+    let CollisionCategoryPowerUpOrb : UInt32 = 0x1 << 2
+    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
