@@ -34,10 +34,14 @@ class GameScene: SKScene {
         
         // add the player
         playerNode = SKSpriteNode(imageNamed: "Player")
+        playerNode!.position = CGPoint(x: size.width / 2.0, y: 80.0)
         playerNode!.physicsBody = SKPhysicsBody(circleOfRadius: playerNode!.size.width / 2)
         playerNode!.physicsBody!.dynamic = true
-        playerNode!.position = CGPoint(x: size.width / 2.0, y: 80.0)
         playerNode!.physicsBody!.linearDamping = 1.0
+        playerNode!.physicsBody!.allowsRotation = false
+        playerNode!.physicsBody!.categoryBitMask = CollisionCategoryPlayer
+        playerNode!.physicsBody!.contactTestBitMask = CollisionCategoryPowerUpOrb
+        playerNode!.physicsBody!.collisionBitMask = 0
         addChild(playerNode!)
         
         // add the orb object
@@ -45,6 +49,9 @@ class GameScene: SKScene {
         orbNode!.position = CGPoint(x: 150.0, y: size.height - 25)
         orbNode!.physicsBody = SKPhysicsBody(circleOfRadius: orbNode!.size.width / 2.0)
         orbNode!.physicsBody!.dynamic = false
+        orbNode!.physicsBody!.categoryBitMask = CollisionCategoryPowerUpOrb
+        orbNode!.physicsBody!.collisionBitMask = 0
+        orbNode!.name = "POWER_UP_ORB"
         addChild(orbNode!)
     }
     
