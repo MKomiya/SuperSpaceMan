@@ -8,7 +8,7 @@
 
 import SpriteKit
 
-class GameScene: SKScene {
+class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var backgroundNode : SKSpriteNode?
     var playerNode : SKSpriteNode?
@@ -24,6 +24,9 @@ class GameScene: SKScene {
     override init(size: CGSize) {
         super.init(size: size)
         
+        physicsWorld.contactDelegate = self
+        physicsWorld.gravity = CGVectorMake(0.0, -5.0)
+        
         backgroundColor = SKColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 1.0)
         
         // adding the background
@@ -34,8 +37,8 @@ class GameScene: SKScene {
         
         // add the player
         playerNode = SKSpriteNode(imageNamed: "Player")
-        playerNode!.position = CGPoint(x: size.width / 2.0, y: 80.0)
         playerNode!.physicsBody = SKPhysicsBody(circleOfRadius: playerNode!.size.width / 2)
+        playerNode!.position = CGPoint(x: size.width / 2.0, y: 80.0)
         playerNode!.physicsBody!.dynamic = true
         playerNode!.physicsBody!.linearDamping = 1.0
         playerNode!.physicsBody!.allowsRotation = false
@@ -57,5 +60,13 @@ class GameScene: SKScene {
     
     override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
         playerNode!.physicsBody!.applyImpulse(CGVectorMake(0.0, 40.0))
+    }
+    
+    func didBeginContact(contact: SKPhysicsContact) {
+        var nodeB = contact.bodyB!.node!
+        
+        if nodeB.name == "POWER_UP_ORB" {
+            nodeB.removeFromParent()
+        }
     }
 }
