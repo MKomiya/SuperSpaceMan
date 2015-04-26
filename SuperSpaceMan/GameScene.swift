@@ -7,12 +7,16 @@
 //
 
 import SpriteKit
+import CoreMotion
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var foregroundNode : SKSpriteNode?
     var backgroundNode : SKSpriteNode?
     var playerNode : SKSpriteNode?
+    
+    let coreMosionManager = CMMotionManager()
+    var xAxisAcceleration : CGFloat = 0.0
     
     var impulseCount = 4
     let CollisionCategoryPlayer : UInt32     = 0x1 << 1
@@ -72,6 +76,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
         if !playerNode!.physicsBody!.dynamic {
             playerNode!.physicsBody!.dynamic = true
+            
+            coreMosionManager.accelerometerUpdateInterval = 0.3
+            coreMosionManager.startAccelerometerUpdatesToQueue(NSOperationQueue(),
+                withHandler: {
+                    (data: CMAccelerometerData!, error: NSError!) in
+                    if let constVar = error {
+                        println("Invalid accelermoter error.")
+                    } else {
+                        self.xAxisAcceleration = CGFloat(data!.acceleration.x)
+                    }
+            })
         }
         
         if impulseCount > 0 {
@@ -96,5 +111,20 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             foregroundNode!.position =
                 CGPointMake(self.foregroundNode!.position.x, -(self.playerNode!.position.y - 180.0))
         }
+    }
+    
+    override func didSimulatePhysics() {
+        playerNode!.physicsBody!.velocity = CGVectorMake(xAxisAcceleration * 380.0, playerNode!.physicsBody!.velocity.dy)
+        
+        if playerNode!.position.x < -(playerNode!.size.width / 2) {
+            playerNode!.position = CGPointMake(size.width - playerNode!.size.width / 2, playerNode!.position.y)
+        }
+        else if playerNode!.position.x > size.width {
+            playerNode!.position = CGPointMake(playerNode!.size.width / 2, playerNode!.position.y)
+        }
+    }
+    
+    deinit {
+        coreMosionManager.stopAccelerometerUpdates()
     }
 }
