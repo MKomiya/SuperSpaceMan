@@ -124,6 +124,25 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
+    func addOrbsToForeground() {
+        var orbNodePosition = CGPointMake(playerNode!.position.x, playerNode!.position.y + 100)
+        var orbXShift : CGFloat = -1.0
+        
+        for i in 0...19 {
+            var orbNode = SKSpriteNode(imageNamed: "PowerUp")
+            
+            orbNodePosition.y += 140
+            orbNode.position = orbNodePosition
+            orbNode.physicsBody = SKPhysicsBody(circleOfRadius: orbNode.size.width / 2)
+            orbNode.physicsBody!.dynamic = false
+            orbNode.physicsBody!.categoryBitMask = CollisionCategoryPowerUpOrb
+            orbNode.physicsBody!.collisionBitMask = 0
+            orbNode.name = "POWER_UP_ORB"
+            
+            foregroundNode!.addChild(orbNode)
+        }
+    }
+    
     deinit {
         coreMosionManager.stopAccelerometerUpdates()
     }
