@@ -128,9 +128,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         var orbNodePosition = CGPointMake(playerNode!.position.x, playerNode!.position.y + 100)
         var orbXShift : CGFloat = -1.0
         
-        for i in 0...19 {
+        for i in 0...50 {
             var orbNode = SKSpriteNode(imageNamed: "PowerUp")
             
+            if orbNodePosition.x - (orbNode.size.width * 2) <= 0 {
+                orbXShift = 1.0
+            }
+            
+            if orbNodePosition.x + orbNode.size.width >= self.size.width {
+                orbXShift = -1.0
+            }
+            
+            orbNodePosition.x += 40.0 * orbXShift
             orbNodePosition.y += 140
             orbNode.position = orbNodePosition
             orbNode.physicsBody = SKPhysicsBody(circleOfRadius: orbNode.size.width / 2)
