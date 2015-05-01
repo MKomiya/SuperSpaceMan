@@ -152,6 +152,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
+    func addBlackHolesToForeground() {
+        var blackHoleNode = SKSpriteNode(imageNamed: "BlackHole0")
+        blackHoleNode.position = CGPointMake(size.width - 80.0, 600.0)
+        blackHoleNode.physicsBody =
+            SKPhysicsBody(circleOfRadius: blackHoleNode.size.width / 2)
+        blackHoleNode.physicsBody!.dynamic = false
+        blackHoleNode.name = "BLACK_HOLE"
+        
+        foregroundNode!.addChild(blackHoleNode)
+    }
+    
     deinit {
         coreMosionManager.stopAccelerometerUpdates()
     }
