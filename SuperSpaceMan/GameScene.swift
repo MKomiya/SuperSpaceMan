@@ -21,6 +21,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var impulseCount = 4
     let CollisionCategoryPlayer : UInt32     = 0x1 << 1
     let CollisionCategoryPowerUpOrb : UInt32 = 0x1 << 2
+    let CollisionCategoryBlackHoles : UInt32 = 0x1 << 3
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
