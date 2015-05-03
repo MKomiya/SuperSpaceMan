@@ -160,6 +160,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             SKPhysicsBody(circleOfRadius: blackHoleNode.size.width / 2)
         blackHoleNode.physicsBody!.dynamic = false
         blackHoleNode.name = "BLACK_HOLE"
+        blackHoleNode.physicsBody!.categoryBitMask = CollisionCategoryBlackHoles
+        blackHoleNode.physicsBody!.collisionBitMask = 0
         
         foregroundNode!.addChild(blackHoleNode)
     }
