@@ -66,7 +66,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             orbNode.position = orbNodePosition
             orbNode.physicsBody = SKPhysicsBody(circleOfRadius: orbNode.size.width / 2)
             orbNode.physicsBody!.dynamic = false
-            orbNode.physicsBody!.categoryBitMask = CollisionCategoryPowerUpOrb
+            orbNode.physicsBody!.categoryBitMask =
+                CollisionCategoryPowerUpOrb | CollisionCategoryBlackHoles
             orbNode.physicsBody!.collisionBitMask = 0
             orbNode.name = "POWER_UP_ORB"
             
