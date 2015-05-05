@@ -104,6 +104,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             impulseCount++
             nodeB.removeFromParent()
         }
+        else if nodeB.name == "BLACK_HOLE" {
+            playerNode!.physicsBody!.contactTestBitMask = 0
+            impulseCount = 0
+        }
     }
     
     override func update(currentTime: NSTimeInterval) {
