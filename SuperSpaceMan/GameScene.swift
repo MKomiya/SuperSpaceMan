@@ -58,21 +58,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         foregroundNode!.addChild(playerNode!)
         
         // add power up orbs
-        var orbNodePosition = CGPointMake(playerNode!.position.x, playerNode!.position.y + 100)
-        for i in 0...19 {
-            var orbNode = SKSpriteNode(imageNamed: "PowerUp")
-            
-            orbNodePosition.y += 140
-            orbNode.position = orbNodePosition
-            orbNode.physicsBody = SKPhysicsBody(circleOfRadius: orbNode.size.width / 2)
-            orbNode.physicsBody!.dynamic = false
-            orbNode.physicsBody!.categoryBitMask =
-                CollisionCategoryPowerUpOrb | CollisionCategoryBlackHoles
-            orbNode.physicsBody!.collisionBitMask = 0
-            orbNode.name = "POWER_UP_ORB"
-            
-            foregroundNode!.addChild(orbNode)
-        }
+        addOrbsToForeground()
+        addBlackHolesToForeground()
     }
     
     override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
@@ -159,16 +146,24 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func addBlackHolesToForeground() {
-        var blackHoleNode = SKSpriteNode(imageNamed: "BlackHole0")
-        blackHoleNode.position = CGPointMake(size.width - 80.0, 600.0)
-        blackHoleNode.physicsBody =
-            SKPhysicsBody(circleOfRadius: blackHoleNode.size.width / 2)
-        blackHoleNode.physicsBody!.dynamic = false
-        blackHoleNode.name = "BLACK_HOLE"
-        blackHoleNode.physicsBody!.categoryBitMask = CollisionCategoryBlackHoles
-        blackHoleNode.physicsBody!.collisionBitMask = 0
+        let moveLeftAction  = SKAction.moveToX(0.0, duration: 2.0)
+        let moveRightAction = SKAction.moveToX(size.width, duration: 2.0)
+        let actionSequence  = SKAction.sequence([moveLeftAction, moveRightAction])
+        let moveAction      = SKAction.repeatActionForever(actionSequence)
         
-        foregroundNode!.addChild(blackHoleNode)
+        for i in 1...10 {
+            var blackHoleNode = SKSpriteNode(imageNamed: "BlackHole0")
+            blackHoleNode.position = CGPointMake(size.width - 80.0, 600.0 * CGFloat(i))
+            blackHoleNode.physicsBody =
+                SKPhysicsBody(circleOfRadius: blackHoleNode.size.width / 2)
+            blackHoleNode.physicsBody!.dynamic = false
+            blackHoleNode.name = "BLACK_HOLE"
+            blackHoleNode.physicsBody!.categoryBitMask = CollisionCategoryBlackHoles
+            blackHoleNode.physicsBody!.collisionBitMask = 0
+            blackHoleNode.runAction(moveAction)
+            
+            foregroundNode!.addChild(blackHoleNode)
+        }
     }
     
     deinit {
