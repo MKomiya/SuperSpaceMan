@@ -14,6 +14,7 @@
 		69FD87571ADA5D2B00F5DB2C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 69FD87561ADA5D2B00F5DB2C /* Images.xcassets */; };
 		69FD875A1ADA5D2B00F5DB2C /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 69FD87581ADA5D2B00F5DB2C /* LaunchScreen.xib */; };
 		69FD87661ADA5D2B00F5DB2C /* SuperSpaceManTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69FD87651ADA5D2B00F5DB2C /* SuperSpaceManTests.swift */; };
+		D024A9561AFA0BD000A6C28C /* sprites.atlas in Resources */ = {isa = PBXBuildFile; fileRef = D024A9551AFA0BD000A6C28C /* sprites.atlas */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +39,7 @@
 		69FD875F1ADA5D2B00F5DB2C /* SuperSpaceManTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SuperSpaceManTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		69FD87641ADA5D2B00F5DB2C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		69FD87651ADA5D2B00F5DB2C /* SuperSpaceManTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuperSpaceManTests.swift; sourceTree = "<group>"; };
+		D024A9551AFA0BD000A6C28C /* sprites.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = sprites.atlas; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +87,7 @@
 				69FD87531ADA5D2B00F5DB2C /* Main.storyboard */,
 				69FD87561ADA5D2B00F5DB2C /* Images.xcassets */,
 				69FD87581ADA5D2B00F5DB2C /* LaunchScreen.xib */,
+				D024A9551AFA0BD000A6C28C /* sprites.atlas */,
 				69FD87491ADA5D2B00F5DB2C /* Supporting Files */,
 			);
 			path = SuperSpaceMan;
@@ -197,6 +200,7 @@
 			files = (
 				69FD875A1ADA5D2B00F5DB2C /* LaunchScreen.xib in Resources */,
 				69FD87571ADA5D2B00F5DB2C /* Images.xcassets in Resources */,
+				D024A9561AFA0BD000A6C28C /* sprites.atlas in Resources */,
 				69FD87551ADA5D2B00F5DB2C /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
