@@ -13,6 +13,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var foregroundNode : SKSpriteNode?
     var backgroundNode : SKSpriteNode?
+    var backgroundStarNode : SKSpriteNode?
     var playerNode : SKSpriteNode?
     
     let coreMosionManager = CMMotionManager()
@@ -40,6 +41,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         backgroundNode!.anchorPoint = CGPoint(x: 0.5, y: 0.0)
         backgroundNode!.position    = CGPoint(x: size.width / 2.0, y: 0.0)
         addChild(backgroundNode!)
+        
+        backgroundStarNode = SKSpriteNode(imageNamed: "Star")
+        backgroundStarNode!.anchorPoint = CGPoint(x: 0.5, y: 0.0)
+        backgroundStarNode!.position    = CGPoint(x: 160.0, y: 0.0)
+        addChild(backgroundStarNode!)
         
         // adding the foreground
         foregroundNode = SKSpriteNode()
