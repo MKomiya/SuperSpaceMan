@@ -42,7 +42,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         backgroundNode!.position    = CGPoint(x: size.width / 2.0, y: 0.0)
         addChild(backgroundNode!)
         
-        backgroundStarNode = SKSpriteNode(imageNamed: "Star")
+        backgroundStarNode = SKSpriteNode(imageNamed: "Stars")
         backgroundStarNode!.anchorPoint = CGPoint(x: 0.5, y: 0.0)
         backgroundStarNode!.position    = CGPoint(x: 160.0, y: 0.0)
         addChild(backgroundStarNode!)
