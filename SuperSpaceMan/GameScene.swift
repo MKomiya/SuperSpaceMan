@@ -107,6 +107,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if playerNode!.position.y >= 180.0 {
             backgroundNode!.position =
                 CGPointMake(self.backgroundNode!.position.x, -((self.playerNode!.position.y - 180.0)/8))
+            backgroundStarNode!.position =
+                CGPointMake(self.backgroundStarNode!.position.x, -((self.playerNode!.position.y - 180.0)/6))
             foregroundNode!.position =
                 CGPointMake(self.foregroundNode!.position.x, -(self.playerNode!.position.y - 180.0))
         }
