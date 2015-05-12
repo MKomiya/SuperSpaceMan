@@ -14,6 +14,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var foregroundNode : SKSpriteNode?
     var backgroundNode : SKSpriteNode?
     var backgroundStarNode : SKSpriteNode?
+    var backgroundPlanetNode : SKSpriteNode?
     var playerNode : SKSpriteNode?
     
     let coreMosionManager = CMMotionManager()
