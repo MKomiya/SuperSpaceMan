@@ -48,6 +48,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         backgroundStarNode!.position    = CGPoint(x: 160.0, y: 0.0)
         addChild(backgroundStarNode!)
         
+        backgroundPlanetNode = SKSpriteNode(imageNamed: "Planet")
+        backgroundPlanetNode!.anchorPoint = CGPoint(x: 0.5, y: 0.0)
+        backgroundPlanetNode!.position    = CGPoint(x: 160.0, y: 0.0)
+        addChild(backgroundPlanetNode!)
+        
         // adding the foreground
         foregroundNode = SKSpriteNode()
         addChild(foregroundNode!)
